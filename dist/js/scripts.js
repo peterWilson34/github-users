@@ -7,6 +7,9 @@ angular.module('GithubUsers').run(['$rootScope','$state',function($rootScope,$st
         $state.go(to.redirectTo, params, {location: 'replace'})
       }
     });
+    console.log($('#example-menu'));
+    var elem = new Foundation.ResponsiveMenu($('#example-menu'));
+
 }])
 
 angular.module('GithubUsers').config(['$stateProvider','$urlRouterProvider',function($stateProvider,$urlRouterProvider){
@@ -79,11 +82,28 @@ angular.module('GithubUsers').factory('Users',['$http','$q',function($http,$q){
         defered.reject(err);
       })
       return defered.promise;
+    },
+    getUserById:function(id){
+      var defered= $q.defer();
+      $http({
+        url:'https://api.github.com/users/'+id,
+        method:'GET'
+      }).then(function(users){
+        defered.resolve(users.data);
+      },function(err){
+        defered.reject(err);
+      })
+      return defered.promise;
     }
   }
 }])
 
-angular.module('GithubUsers').controller('singleUserCtrl',[function(){
+angular.module('GithubUsers').controller('singleUserCtrl',['$stateParams','Users','$scope',function($stateParams,Users,$scope){
+  console.log($stateParams);
+  Users.getUserById($stateParams.login).then(function(user){
+    console.log(user);
+    $scope.user=user;
+  })
 }])
 
 angular.module('GithubUsers').controller('usersCtrl',['getAllUsers','$scope',function(getAllUsers,$scope){
