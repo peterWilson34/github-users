@@ -4,7 +4,8 @@
   "description": "Instabug task",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,17 @@
   "bugs": {
     "url": "https://github.com/peterWilson34/github-users/issues"
   },
-  "homepage": "https://github.com/peterWilson34/github-users#readme"
+  "homepage": "https://github.com/peterWilson34/github-users#readme",
+  "devDependencies": {
+    "angular": "^1.6.2",
+    "angular-ui-router": "^0.4.2",
+    "bootstrap": "^4.0.0-alpha.6",
+    "express": "^4.14.1",
+    "foundation-sites": "^6.3.0",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^3.1.0",
+    "gulp-watch": "^4.3.11"
+  }
 }
