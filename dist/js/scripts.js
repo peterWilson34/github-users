@@ -37,17 +37,33 @@ angular.module('GithubUsers').config(['$stateProvider','$urlRouterProvider',func
     name:'users',
     url:'/users',
     controller:'usersCtrl',
-    templateUrl:'templates/usersTpl.html'
+    templateUrl:'templates/usersTpl.html',
+    resolve:{
+      getAllUsers:['Users','$q',function(Users,$q){
+        var defered=$q.defer();
+        Users.getAllUsers().then(function(users){
+          defered.resolve(users);
+        })
+        return defered.promise;
+      }]
+    }
+
   })
   .state({
-    name:'user-details',
-    url:'/users/{login}',
+    name:'users.details',
+    url:'/{login}',
     controller:'singleUserCtrl',
     templateUrl:'templates/singleUserTpl.html'
   })
 
 
   $urlRouterProvider.otherwise('/');
+}])
+
+angular.module('GithubUsers').directive('usersList',['Users',function(Users){
+  return{
+    templateUrl:'templates/usersListTpl.html'
+  }
 }])
 
 angular.module('GithubUsers').factory('Users',['$http','$q',function($http,$q){
@@ -58,7 +74,6 @@ angular.module('GithubUsers').factory('Users',['$http','$q',function($http,$q){
         url:'https://api.github.com/users',
         method:'GET'
       }).then(function(users){
-        console.log(users);
         defered.resolve(users.data);
       },function(err){
         defered.reject(err);
@@ -71,8 +86,7 @@ angular.module('GithubUsers').factory('Users',['$http','$q',function($http,$q){
 angular.module('GithubUsers').controller('singleUserCtrl',[function(){
 }])
 
-angular.module('GithubUsers').controller('usersCtrl',['Users',function(Users){
-  Users.getAllUsers().then(function(users){
-    console.log(users);
-  })
+angular.module('GithubUsers').controller('usersCtrl',['getAllUsers','$scope',function(getAllUsers,$scope){
+  console.log(getAllUsers);
+  $scope.users=getAllUsers
 }])

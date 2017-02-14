@@ -1,5 +1,4 @@
-angular.module('GithubUsers').controller('usersCtrl',['Users',function(Users){
-  Users.getAllUsers().then(function(users){
-    console.log(users);
-  })
+angular.module('GithubUsers').controller('usersCtrl',['getAllUsers','$scope',function(getAllUsers,$scope){
+  console.log(getAllUsers);
+  $scope.users=getAllUsers
 }])

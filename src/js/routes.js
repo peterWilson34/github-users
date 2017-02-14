@@ -26,11 +26,21 @@ angular.module('GithubUsers').config(['$stateProvider','$urlRouterProvider',func
     name:'users',
     url:'/users',
     controller:'usersCtrl',
-    templateUrl:'templates/usersTpl.html'
+    templateUrl:'templates/usersTpl.html',
+    resolve:{
+      getAllUsers:['Users','$q',function(Users,$q){
+        var defered=$q.defer();
+        Users.getAllUsers().then(function(users){
+          defered.resolve(users);
+        })
+        return defered.promise;
+      }]
+    }
+
   })
   .state({
-    name:'user-details',
-    url:'/users/{login}',
+    name:'users.details',
+    url:'/{login}',
     controller:'singleUserCtrl',
     templateUrl:'templates/singleUserTpl.html'
   })
