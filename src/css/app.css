@@ -4418,6 +4418,16 @@ body {
   .no-js .title-bar {
     display: none; } }
 
+.top-bar {
+  margin-bottom: 20px;
+  background-color: #1779ba; }
+  .top-bar ul {
+    background-color: #1779ba; }
+    .top-bar ul li {
+      color: #fff; }
+      .top-bar ul li a {
+        color: #fff; }
+
 .users .user {
   margin-bottom: 10px; }
   .users .user img {
@@ -4428,3 +4438,7 @@ body {
     margin-right: 10px; }
   .users .user h5 {
     display: inline-block; }
+
+.users div.columns:last-of-type {
+  background-color: #fff;
+  padding-top: 20px; }

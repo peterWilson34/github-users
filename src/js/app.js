@@ -7,7 +7,6 @@ angular.module('GithubUsers').run(['$rootScope','$state',function($rootScope,$st
         $state.go(to.redirectTo, params, {location: 'replace'})
       }
     });
-    console.log($('#example-menu'));
-    var elem = new Foundation.ResponsiveMenu($('#example-menu'));
-
+    $(document).foundation();
+    
 }])

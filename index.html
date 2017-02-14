@@ -14,23 +14,28 @@
 </head>
 <body>
 
-  <div class="title-bar" data-responsive-toggle="main-menu" data-hide-for="medium">
-    <button class="menu-icon" type="button" data-toggle></button>
-    <div class="title-bar-title">Menu</div>
-  </div>
-  <div class="top-bar" id="main-menu">
-  <div class="top-bar-left">
-    <ul class="dropdown menu" data-dropdown-menu>
-      <li class="menu-text">Site Title</li>
-    </ul>
-  </div>
-  <div class="top-bar-left">
-    <ul class="menu vertical medium-horizontal " data-responsive-menu="drilldown medium-dropdown">
+<div class="title-bar" data-responsive-toggle="example-menu" data-hide-for="medium">
+		<button class="menu-icon" type="button" data-toggle></button>
+		<div class="title-bar-title">Menu</div>
+</div>
 
-      <li><a href="#">Two</a></li>
-      <li><a href="#">Three</a></li>
-    </ul>
+<div class="top-bar" id="example-menu">
+  <div class="row">
+    <div class="top-bar-left">
+				<ul class="menu">
+						<li class="menu-text"><i class="fi-social-github"></i> Github Users</li>
+				</ul>
+		</div>
+		<div class="top-bar-right">
+				<ul class=" medium-horizontal vertical dropdown menu" data-responsive-menu="accordion medium-dropdown">
+
+						<li><a ui-sref="jome">Home</a></li>
+						<li><a ui-sref="users">Users</a></li>
+						<li><a ui-sref="about">About</a></li>
+				</ul>
+		</div>
   </div>
+
 </div>
 
 

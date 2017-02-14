@@ -7,9 +7,8 @@ angular.module('GithubUsers').run(['$rootScope','$state',function($rootScope,$st
         $state.go(to.redirectTo, params, {location: 'replace'})
       }
     });
-    console.log($('#example-menu'));
-    var elem = new Foundation.ResponsiveMenu($('#example-menu'));
-
+    $(document).foundation();
+    
 }])
 
 angular.module('GithubUsers').config(['$stateProvider','$urlRouterProvider',function($stateProvider,$urlRouterProvider){
@@ -106,7 +105,8 @@ angular.module('GithubUsers').controller('singleUserCtrl',['$stateParams','Users
   })
 }])
 
-angular.module('GithubUsers').controller('usersCtrl',['getAllUsers','$scope',function(getAllUsers,$scope){
+angular.module('GithubUsers').controller('usersCtrl',['getAllUsers','$scope','$location',function(getAllUsers,$scope,$location){
   console.log(getAllUsers);
-  $scope.users=getAllUsers
+  $scope.users=getAllUsers;
+  $location.url('users/'+getAllUsers[0].login)
 }])
