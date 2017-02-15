@@ -23,6 +23,18 @@ angular.module('GithubUsers').factory('Users',['$http','$q',function($http,$q){
         defered.reject(err);
       })
       return defered.promise;
+    },
+    getMoreUsers:function(id){
+      var defered= $q.defer();
+      $http({
+        url:'https://api.github.com/users?since='+id,
+        method:'GET'
+      }).then(function(users){
+        defered.resolve(users.data);
+      },function(err){
+        defered.reject(err);
+      })
+      return defered.promise;
     }
   }
 }])

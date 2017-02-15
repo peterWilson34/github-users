@@ -4406,39 +4406,118 @@ a.thumbnail {
   flex: 0 0 auto;
   max-width: 100%; }
 
+html, body {
+  height: 100%; }
+
 body {
   background-color: #e6e6e6; }
 
-.no-js .top-bar {
-  display: none; }
+.center {
+  align-items: center; }
 
-@media screen and (min-width: 40em) {
-  .no-js .top-bar {
-    display: block; }
-  .no-js .title-bar {
-    display: none; } }
+#loading-bar .bar {
+  background-color: #333;
+  height: 3px; }
+
+.about-header {
+  height: 200px;
+  background-attachment: scroll; }
+
+footer {
+  background-color: #333;
+  color: #fff;
+  padding: 20px 0; }
+  footer ul {
+    display: inline-block; }
+    footer ul li a {
+      color: #fff; }
+  footer .social-icons {
+    font-size: 30px; }
+    footer .social-icons li i {
+      display: inline-block;
+      margin-right: 10px; }
+
+header {
+  background-image: url("../imgs/github.jpg");
+  height: 500px;
+  display: table;
+  width: 100%;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  background-attachment: fixed;
+  margin-bottom: 50px; }
+  header .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); }
+  header .row {
+    position: relative;
+    color: #fff;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center; }
+
+.quotes {
+  text-align: center; }
+  .quotes .img {
+    border: 1px solid #999;
+    border-radius: 50%;
+    display: inline-block;
+    padding: 5px; }
+    .quotes .img img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      display: inline-block; }
 
 .top-bar {
-  margin-bottom: 20px;
   background-color: #1779ba; }
   .top-bar ul {
     background-color: #1779ba; }
     .top-bar ul li {
       color: #fff; }
+      .top-bar ul li.active a {
+        background-color: rgba(0, 0, 0, 0.3); }
       .top-bar ul li a {
         color: #fff; }
 
-.users .user {
-  margin-bottom: 10px; }
-  .users .user img {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    display: inline-block;
-    margin-right: 10px; }
-  .users .user h5 {
-    display: inline-block; }
+@media screen and (min-width: 40em) {
+  .top-bar {
+    display: block; }
+  .title-bar {
+    display: none; } }
 
-.users div.columns:last-of-type {
+.singleuser {
   background-color: #fff;
+  padding: 20px; }
+  .singleuser .row {
+    align-items: center; }
+  .singleuser .userid {
+    display: inline-block;
+    vertical-align: middle; }
+  .singleuser p {
+    margin: 0; }
+  .singleuser .thumbnail {
+    margin-bottom: 0; }
+
+.users {
   padding-top: 20px; }
+  .users .large-4 users-list {
+    height: 600px;
+    overflow-y: scroll;
+    display: inline-block;
+    width: 100%; }
+  .users .user {
+    margin-bottom: 10px; }
+    .users .user img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: inline-block;
+      margin-right: 10px; }
+    .users .user h5 {
+      display: inline-block; }

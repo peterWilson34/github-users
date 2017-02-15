@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="GithubUsers">
 <head>
+  <!-- <base href="/github-users/index.html"> -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+  <title ng-cloak>{{activeTitle}}</title>
   <script type="text/javascript" src='node_modules/angular/angular.min.js'></script>
   <script type="text/javascript" src='node_modules/angular-ui-router/release/angular-ui-router.min.js'></script>
+  <script type="text/javascript" src="node_modules/angular-loading-bar/build/loading-bar.min.js"></script>
   <script type="text/javascript" src='node_modules/jquery/dist/jquery.min.js'></script>
   <script type="text/javascript" src='node_modules/foundation-sites/dist/js/foundation.min.js'></script>
   <script type="text/javascript" src='dist/js/scripts.js'></script>
+  <link rel="stylesheet" href="node_modules/angular-loading-bar/build/loading-bar.min.css">
   <link rel="stylesheet" href="dist/css/styles.css">
 </head>
 <body>
@@ -29,9 +32,9 @@
 		<div class="top-bar-right">
 				<ul class=" medium-horizontal vertical dropdown menu" data-responsive-menu="accordion medium-dropdown">
 
-						<li><a ui-sref="jome">Home</a></li>
-						<li><a ui-sref="users">Users</a></li>
-						<li><a ui-sref="about">About</a></li>
+						<li ng-class="{'active':activePage=='home'}"><a ui-sref="home">Home</a></li>
+						<li ng-class="{'active':activePage=='users'||activePage=='users.details'}"><a ui-sref="users">Users</a></li>
+						<li ng-class="{'active':activePage=='about'}"><a ui-sref="about">About</a></li>
 				</ul>
 		</div>
   </div>
@@ -41,5 +44,34 @@
 
 
   <ui-view></ui-view>
+
+  <footer>
+    <div class="row center">
+      <div class="columns small-4 social-icons">
+        <ul class="menu small-horizotnal">
+          <li><i class="fi-social-facebook large"></i></li>
+          <li><i class="fi-social-twitter large"></i></li>
+          <li><i class="fi-social-linkedin large"></i></li>
+          <li><i class="fi-social-google-plus large"></i></li>
+        </ul>
+      </div>
+      <p class="columns small-4">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</p>
+      <div class="columns small-4">
+        <ul class=" small-vertical vertical  menu" data-responsive-menu="accordion medium-dropdown">
+
+						<li><a ui-sref="home">Home</a></li>
+						<li><a ui-sref="users">Users</a></li>
+						<li><a ui-sref="about">About</a></li>
+				</ul>
+        <ul class=" small-vertical vertical  menu" data-responsive-menu="accordion medium-dropdown">
+
+            <li><a ui-sref="home">Home</a></li>
+            <li><a ui-sref="users">Users</a></li>
+            <li><a ui-sref="about">About</a></li>
+        </ul>
+      </div>
+
+    </div>
+  </footer>
 </body>
 </html>

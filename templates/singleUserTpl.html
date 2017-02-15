@@ -1,14 +1,19 @@
 <div class="singleuser">
   <div class="row">
-    <div class="small-4 columns">
+    <div class="medium-4 columns">
         <div class="thumbnail">
           <img ng-src="{{user.avatar_url}}">
         </div>
     </div>
-    <div class="small-8 columns">
-        <h4>{{user.name}} <small>{{user.location}}</small></h4>
-        <p>I'm going to improvise. Listen, there's something you should know about me... about inception. An idea is like a virus, resilient, highly contagious. The smallest seed of an idea can grow. It can grow to define or destroy you.</p>
+    <div class="medium-8 columns">
+        <h4><span class="badge alert userid" >{{user.id}}</span> {{user.name}} </h4>
+
+
+        <p> Created at {{user.created_at| date}}</p>
+        <p><span class="fi-mail"></span> {{user.email}}</p>
+
     </div>
+
 
   </div>
 

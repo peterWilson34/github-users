@@ -1,4 +1,16 @@
 .users{
+  padding-top: 20px;
+
+  .large-4{
+
+    users-list{
+      height: 600px;
+      overflow-y: scroll;
+      display: inline-block;
+      width: 100%;
+
+    }
+  }
   .user{
     img{
       width: 50px;
@@ -12,8 +24,5 @@
     }
     margin-bottom: 10px;
   }
-  div.columns:last-of-type{
-    background-color: #fff;
-    padding-top: 20px;
-  }
+
 }

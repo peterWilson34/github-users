@@ -2,19 +2,18 @@
 @include foundation-flex-classes;
 @include foundation-flex-grid;
 
+html,body{
+  height: 100%;
+}
 body{
   background-color: $light-gray;
 }
-.no-js .top-bar {
-  display: none;
+.center{
+  align-items: center;
 }
-
-@media screen and (min-width: 40em) {
-  .no-js .top-bar {
-    display: block;
-  }
-
-  .no-js .title-bar {
-    display: none;
+#loading-bar {
+  .bar {
+    background-color: #333;
+    height: 3px;
   }
 }

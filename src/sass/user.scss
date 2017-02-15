@@ -1,0 +1,17 @@
+.singleuser{
+  .row{
+    align-items: center;
+  }
+  background-color: #fff;
+  padding: 20px;
+  .userid{
+    display: inline-block;
+    vertical-align: middle;
+  }
+  p{
+    margin: 0;
+  }
+  .thumbnail{
+    margin-bottom: 0;
+  }
+}

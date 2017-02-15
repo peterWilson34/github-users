@@ -1,4 +1,6 @@
 <div class="user" ng-repeat="user in users">
+  <a ui-sref="users.details({login:user.login})">
     <img class="user_avatar" ng-src="{{user.avatar_url}}">
     <h5>{{user.login}}</h5>
+  </a>
 </div>

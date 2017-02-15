@@ -1,38 +1,51 @@
-angular.module('GithubUsers',['ui.router']);
+angular.module('GithubUsers',['ui.router','angular-loading-bar']);
 
-angular.module('GithubUsers').run(['$rootScope','$state',function($rootScope,$state){
+angular.module('GithubUsers').run(['$rootScope','$state','$timeout','$anchorScroll',function($rootScope,$state,$timeout,$anchorScroll){
   $rootScope.$on('$stateChangeStart', function(evt, to, params) {
+    $rootScope.activePage=to.name;
+    $rootScope.activeTitle=to.title;
       if (to.redirectTo) {
         evt.preventDefault();
         $state.go(to.redirectTo, params, {location: 'replace'})
       }
     });
-    $(document).foundation();
-    
+  $rootScope.$on('$stateChangeSuccess', function(evt, to, params) {
+    $anchorScroll()
+    $timeout(function () {
+      $(document).foundation();
+
+    },100);
+
+    });
+
 }])
 
-angular.module('GithubUsers').config(['$stateProvider','$urlRouterProvider',function($stateProvider,$urlRouterProvider){
+angular.module('GithubUsers').config(['$stateProvider','$urlRouterProvider','$locationProvider','cfpLoadingBarProvider',function($stateProvider,$urlRouterProvider,$locationProvider,cfpLoadingBarProvider){
   $stateProvider
   .state({
     name:'home',
     url:'/',
-    templateUrl:'templates/homeTpl.html'
+    templateUrl:'templates/homeTpl.html',
+    title:'Github Users'
   })
   .state({
     name:'/home',
     url:'/home',
-    redirectTo:'home'
+    redirectTo:'home',
+    title:'Github Users'
   })
 
   .state({
     name:'about',
     url:'/about',
-    templateUrl:'templates/aboutTpl.html'
+    templateUrl:'templates/aboutTpl.html',
+    title:'About Github Users'
   })
   .state({
       name:'about/',
       url:'/about/',
-      redirectTo:'about'
+      redirectTo:'about',
+      title:'About Github Users'
     })
 
   .state({
@@ -48,18 +61,21 @@ angular.module('GithubUsers').config(['$stateProvider','$urlRouterProvider',func
         })
         return defered.promise;
       }]
-    }
+    },
+    title:'Github Users'
 
   })
   .state({
     name:'users.details',
     url:'/{login}',
     controller:'singleUserCtrl',
-    templateUrl:'templates/singleUserTpl.html'
+    templateUrl:'templates/singleUserTpl.html',
+    title:'Github User Details'
   })
-
+  cfpLoadingBarProvider.includeSpinner = false;
 
   $urlRouterProvider.otherwise('/');
+  // $locationProvider.html5Mode(true)
 }])
 
 angular.module('GithubUsers').directive('usersList',['Users',function(Users){
@@ -93,6 +109,18 @@ angular.module('GithubUsers').factory('Users',['$http','$q',function($http,$q){
         defered.reject(err);
       })
       return defered.promise;
+    },
+    getMoreUsers:function(id){
+      var defered= $q.defer();
+      $http({
+        url:'https://api.github.com/users?since='+id,
+        method:'GET'
+      }).then(function(users){
+        defered.resolve(users.data);
+      },function(err){
+        defered.reject(err);
+      })
+      return defered.promise;
     }
   }
 }])
@@ -105,8 +133,16 @@ angular.module('GithubUsers').controller('singleUserCtrl',['$stateParams','Users
   })
 }])
 
-angular.module('GithubUsers').controller('usersCtrl',['getAllUsers','$scope','$location',function(getAllUsers,$scope,$location){
-  console.log(getAllUsers);
+angular.module('GithubUsers').controller('usersCtrl',['getAllUsers','$scope','$location','Users',function(getAllUsers,$scope,$location,Users){
   $scope.users=getAllUsers;
-  $location.url('users/'+getAllUsers[0].login)
+  $location.url('users/'+getAllUsers[0].login);
+  $scope.loadMore=function(){
+    Users.getMoreUsers($scope.users[$scope.users.length-1].id).then(function(users){
+      for (var i = 0; i < users.length; i++) {
+        $scope.users.push(users[i]);
+      }
+
+
+    })
+  }
 }])
