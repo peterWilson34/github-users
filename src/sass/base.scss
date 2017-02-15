@@ -1,3 +1,6 @@
+/*------------------------------------*\
+  Main
+\*------------------------------------*/
 @import '../../node_modules/foundation-sites/assets/foundation';
 @include foundation-flex-classes;
 @include foundation-flex-grid;
@@ -16,4 +19,7 @@ body{
     background-color: #333;
     height: 3px;
   }
+}
+*,*:hover,*:focus,*:active{
+  outline: none;
 }

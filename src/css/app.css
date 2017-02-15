@@ -1,4 +1,6 @@
 @charset "UTF-8";
+/*------------------------------------*  Main
+\*------------------------------------*/
 /**
  * Foundation for Sites by ZURB
  * Version 6.3.0
@@ -4419,10 +4421,17 @@ body {
   background-color: #333;
   height: 3px; }
 
+*, *:hover, *:focus, *:active {
+  outline: none; }
+
+/*------------------------------------*  About Page
+\*------------------------------------*/
 .about-header {
   height: 200px;
   background-attachment: scroll; }
 
+/*------------------------------------*  Footer
+\*------------------------------------*/
 footer {
   background-color: #333;
   color: #fff;
@@ -4436,7 +4445,12 @@ footer {
     footer .social-icons li i {
       display: inline-block;
       margin-right: 10px; }
+  footer p {
+    padding: 0;
+    margin: 0; }
 
+/*------------------------------------*  Home Page
+\*------------------------------------*/
 header {
   background-image: url("../imgs/github.jpg");
   height: 500px;
@@ -4474,6 +4488,8 @@ header {
       border-radius: 50%;
       display: inline-block; }
 
+/*------------------------------------*  Top Header
+\*------------------------------------*/
 .top-bar {
   background-color: #1779ba; }
   .top-bar ul {
@@ -4491,6 +4507,8 @@ header {
   .title-bar {
     display: none; } }
 
+/*------------------------------------*  Single User
+\*------------------------------------*/
 .singleuser {
   background-color: #fff;
   padding: 20px; }
@@ -4504,6 +4522,8 @@ header {
   .singleuser .thumbnail {
     margin-bottom: 0; }
 
+/*------------------------------------*  Users Page
+\*------------------------------------*/
 .users {
   padding-top: 20px; }
   .users .large-4 users-list {
