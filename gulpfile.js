@@ -5,11 +5,6 @@ var gulp= require('gulp'),
     rename=require('gulp-rename');
 
 
-// gulp.task('foundation',function(){
-//   gulp.src(['node_modules/foundation-sites/scss/foundation.scss']).
-//   pipe(sass()).
-//   pipe(gulp.dest('src/css/'))
-// })
 gulp.task('sass',function(){
   gulp.src(['src/sass/base.scss','src/sass/*.scss']).
   pipe(concat('app.scss')).
