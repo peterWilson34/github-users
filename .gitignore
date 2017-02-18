@@ -1,1 +1,7 @@
-node_modules
+node_modules/*
+!node_modules/angular/angular.min.js
+!node_modules/angular-ui-router/release/angular-ui-router.min.js
+!node_modules/angular-loading-bar/build/loading-bar.min.js
+!node_modules/jquery/dist/jquery.min.js
+!node_modules/foundation-sites/dist/js/foundation.min.js
+!node_modules/angular-loading-bar/build/loading-bar.min.css
