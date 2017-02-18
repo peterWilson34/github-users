@@ -116,10 +116,18 @@ angular.module('GithubUsers').factory('Users',['$http','$q',function($http,$q){
         url:'https://api.github.com/users?since='+id,
         method:'GET'
       }).then(function(users){
+        console.log(users);
         defered.resolve(users.data);
       },function(err){
         defered.reject(err);
       })
+      return defered.promise;
+    },
+    test:function(id){
+      var defered= $q.defer();
+
+        defered.resolve('test');
+
       return defered.promise;
     }
   }
@@ -136,8 +144,8 @@ angular.module('GithubUsers').controller('singleUserCtrl',['$stateParams','Users
 angular.module('GithubUsers').controller('usersCtrl',['getAllUsers','$scope','$location','Users',function(getAllUsers,$scope,$location,Users){
   $scope.users=getAllUsers;
   $location.url('users/'+getAllUsers[0].login);
-  $scope.loadMore=function(){
-    Users.getMoreUsers($scope.users[$scope.users.length-1].id).then(function(users){
+  $scope.loadMore=function(length){
+    Users.getMoreUsers(length).then(function(users){
       for (var i = 0; i < users.length; i++) {
         $scope.users.push(users[i]);
       }

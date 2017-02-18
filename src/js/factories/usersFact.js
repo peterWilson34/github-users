@@ -30,10 +30,18 @@ angular.module('GithubUsers').factory('Users',['$http','$q',function($http,$q){
         url:'https://api.github.com/users?since='+id,
         method:'GET'
       }).then(function(users){
+        console.log(users);
         defered.resolve(users.data);
       },function(err){
         defered.reject(err);
       })
+      return defered.promise;
+    },
+    test:function(id){
+      var defered= $q.defer();
+
+        defered.resolve('test');
+
       return defered.promise;
     }
   }
