@@ -1,7 +1,7 @@
 node_modules/*
-!node_modules/angular/
-!node_modules/angular-ui-router/release/
-!node_modules/angular-loading-bar/build/
-!node_modules/jquery/dist/
-!node_modules/foundation-sites/dist/js/
-!node_modules/angular-loading-bar/build/
+!node_modules/angular
+!node_modules/angular-ui-router
+!node_modules/angular-loading-bar
+!node_modules/jquery
+!node_modules/foundation-sites
+!node_modules/angular-loading-bar
