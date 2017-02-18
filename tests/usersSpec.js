@@ -88,10 +88,20 @@ describe('Users Controllers',function(){
   });
   it('user shouldn\'t be undefined',function(){
     var $scope={};
+    var result;
     $httpBackend.whenGET('https://api.github.com/users/1').respond(function(){
       return [200, JSON.stringify({id:2}), {}];
     })
-    $controller('GithubUsers',{$scope:$scope,Users:Users});
+    var $stateParams={
+      login:1
+    }
+    $controller('singleUserCtrl',{$scope:$scope,Users:Users,$stateParams:$stateParams});
+    Users.getUserById($stateParams.login).then(function(res){
+      result = res;
+    })
+    $httpBackend.flush();
+    expect($scope.user).toBeTruthy(result);
+    expect($scope.user).toEqual(result);
   })
 
 });
